@@ -25,9 +25,10 @@ describe("Jasmine", function() {
 		expect(yourCode).toBeEvenBetter();
 	});
 });
-
+</code>
+<code>
 // Example 2. Only the first suite will run.
-describe("Suite 1", function() {
+odescribe("Suite 1", function() {
 	it("test 1", function() {
 		expect(thisWillRun).toBeTruthy();
 	});
