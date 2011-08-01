@@ -15,18 +15,32 @@ within an odescribe, then the oit gets priority and no other specs within the su
 *Moreover, if the oit is nested in another suite within the odescribe, then that oit is the only spec that will run within that inner suite. The rest of the specs outside of that suite, but still within the scope of
 the original odescribe, also run. 
 
-Example: Only the second test will run.
-
+<code>
+// Example 1. Only the second test will run.
 describe("Jasmine", function() {
 	it("makes testing JavaScript awesome!", function() {
 		expect(yourCode).toBeLotsBetter();
 	});
-	
 	oit("now has added oit functionality!", function() {
 		expect(yourCode).toBeEvenBetter();
 	});
 });
 
+// Example 2. Only the first suite will run.
+describe("Suite 1", function() {
+	it("test 1", function() {
+		expect(thisWillRun).toBeTruthy();
+	});
+	it("test 2", function() {
+		expect(thisWillRun).toBeTruthy();
+	});
+});
+describe("Suite 2", function() {
+	it("test 3", function() {
+		expect(thisWillRun).toBeFalsey();
+	});
+});
+</code>
 
 
 ## Support
