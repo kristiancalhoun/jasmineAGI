@@ -6,10 +6,24 @@ Jasmine is a Behavior Driven Development testing framework for JavaScript. It do
 
 Documentation & guides live here: [http://pivotal.github.com/jasmine/](http://pivotal.github.com/jasmine/)
 
-## What's Here?
+## What's New In This Fork?
 
-* 
+* Individual specs or suites can be marked as the only test(s) to run by calling <code>odescribe()</code> or <code>oit()</code> instead of <code>describe()</code> or <code>it()</code>.  
+** If there are multiple oits, then they will each run and all other non-oit specs will be skipped. 
+** When using odescribe, all specs within that suite will be tested, including those in any nested suites. However, if there is an oit
+within an odescribe, then the oit gets priority and no other specs within the suite will run (except for other oits).
+**Moreover, if the oit is nested in another suite within the odescribe, then that oit is the only spec that will run within that inner suite. The rest of the specs outside of that suite, but still within the scope of
+the original odescribe, also run. 
 
+Example: Only the second test will run.
+
+describe("Jasmine", function() {
+  it("makes testing JavaScript awesome!", function() {
+    expect(yourCode).toBeLotsBetter();
+  });
+  oit("now has added oit functionality!", function() {
+	expect(yourCode).toBeEvenBetter();
+});
 
 
 
